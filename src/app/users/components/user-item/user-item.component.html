@@ -1,0 +1,18 @@
+<li
+  [routerLink]="['/user/', user.id]"
+  class="user-item theme-animation"
+  [ngStyle]="{ 'animation-delay': idx * 0.2 + 's' }"
+>
+  <span class="user-id">{{ user.id }}</span>
+  <p class="user-client">{{ user.first_name + ' ' + user.last_name }}</p>
+  <img
+    [src]="user.avatar"
+    alt="userAvatar"
+    class="user-avatar"
+  />
+  <img
+    src="./assets/img/icon-arrow-down.svg"
+    alt="Icon Arrow"
+    class="user-icon-arrow"
+  />
+</li>

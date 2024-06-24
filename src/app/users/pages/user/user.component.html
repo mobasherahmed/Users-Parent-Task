@@ -1,0 +1,45 @@
+@if (user) {
+  <section class="user">
+    <div class="user-back">
+      <button class="go-back" routerLink="/users">
+        <img src="./assets/img/icon-arrow-left.svg" alt="go back" />
+        <span>Go back</span>
+      </button>
+    </div>
+    <div class="user-wrap theme-animation">
+      <div class="user-header flex-between">
+        <div class="user-header--left">
+          <span>{{ user.id }}</span>
+          <p>{{ user.first_name }} {{ user.last_name }}</p>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+      <div class="user-body flex-between">
+        <div class="image-wrap">
+          <img [src]="user.avatar" alt="userAvatar">
+        </div>
+      </div>
+        <div class="user-actions">
+          <button class="btn" (click)="handleEdit()">Edit</button>
+          <button class="btn btn-delete" (click)="openModal()">Delete</button>
+      </div>
+    </div>
+  </section>
+}
+
+
+@if (modalService.openModal) {
+  <app-modal>
+    <div class="modal-user-delete">
+      <h2>Confirm Deletion</h2>
+      <p>
+        Are you sure you want to delete user {{ user.id }}? This action
+        cannot be undone.
+      </p>
+      <div class="user-actions">
+        <button class="btn" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-delete" (click)="handleDelete()">Delete</button>
+      </div>
+    </div>
+  </app-modal>
+}

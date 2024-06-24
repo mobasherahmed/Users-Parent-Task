@@ -1,0 +1,8 @@
+<ul class="user-list">
+  @for (user of users; track user; let i = $index) {
+    <app-user-item
+      [user]="user"
+      [idx]="i"
+    ></app-user-item>
+  }
+</ul>

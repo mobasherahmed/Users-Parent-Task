@@ -1,0 +1,60 @@
+<section
+  class="user-form theme-animation"
+  [class.close-form]="animateFormClose"
+>
+  <div class="form-wrap">
+    <h2>{{ title }}</h2>
+    <form [formGroup]="form" novalidate autocomplete="off">
+      <fieldset>
+        <legend>User From</legend>
+        <div class="form-section bill-form">
+          <div class="form-control">
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              autocomplete="off"
+            />
+            <label for="name" data-test="prueba"> Name </label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="job"
+              formControlName="job"
+              autocomplete="off"
+            />
+            <label for="job">job</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              autocomplete="off"
+            />
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </fieldset>
+
+      @if (showErrorMessage) {
+      <div class="error-message">
+        <p>- All fields must be filled.</p>
+      </div>
+      }
+    </form>
+
+    <div class="user-form-actions flex-between">
+      <button class="btn" (click)="closeForm()">Discard</button>
+      <div>
+        <button class="btn btn-draft" (click)="saveAsDraft()">
+          Save as {{ userStatus !== "Draft" ? "Draft" : "Pending" }}
+        </button>
+        <button class="btn btn-send" type="button" (click)="handleFormSubmit()">
+          Save & Send
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,153 @@
+@import "../../../../assets/scss/mq";
+
+.user {
+  animation: fadeIn 1s ease-in-out;
+  max-width: 45.5rem;
+  margin: 0 auto;
+
+  @include mq(md) {
+    padding: 0 2rem;
+  }
+}
+
+.user-back {
+  margin-bottom: 2rem;
+
+  .go-back {
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      font-size: 0.75rem;
+      margin-left: 1.5rem;
+    }
+  }
+}
+
+.user-wrap {
+  background: var(--user-bg);
+  box-shadow: rgb(72 84 159 / 10%) 0px 10px 10px -10px;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.user-wrap {
+  margin-bottom: 2rem;
+
+  @include mq(md) {
+    margin-bottom: 0;
+  }
+}
+
+.user-header {
+  margin-bottom: 2.5rem;
+
+  @include mq(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &--left {
+    width: 100%;
+    margin-bottom: 2.5rem;
+
+    @include mq(md) {
+      width: auto;
+    }
+
+    p {
+      color: var(--btn-text);
+    }
+
+    span {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+
+      @include mq(md) {
+        font-size: 1rem;
+      }
+
+      &:before {
+        content: "#";
+        color: hsl(231, 37%, 63%);
+      }
+
+      p {
+        color: var(--btn-text);
+      }
+    }
+  }
+
+  &--right {
+    font-style: normal;
+    text-align: left;
+
+    @include mq(md) {
+      text-align: right;
+    }
+
+    p {
+      color: var(--btn-text);
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+.user-body {
+  align-items: flex-start;
+
+  @include mq(md) {
+    margin-bottom: 1.5rem;
+  }
+
+  .image-wrap{
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  }
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem .75em;
+  text-align: right;
+  width: 100%;
+  position: relative;
+  bottom: -2rem;
+
+  .btn {
+    margin-left: 0.5rem;
+  }
+}
+
+
+.modal-user-delete {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: var(--btn-text);
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .user-actions {
+    bottom: auto;
+    padding: 0;
+    margin: 0;
+    position: initial;
+    width: 100%;
+  }
+}

@@ -1,0 +1,307 @@
+@import '../../../../assets/scss/mq';
+
+.user-form {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: calc(100vh - 80px);
+  background: var(--bg-form);
+  z-index: 95;
+  animation: slideIn 0.45s cubic-bezier(0.215, 0.61, 0.355, 1);
+  
+  @include mq(lg) {
+    top: 0;
+    height: 100vh;
+    border-radius: 0 2rem 2rem 0;
+    padding-left: 6.5rem;
+  }
+
+  &.close-form {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .form-wrap {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    height: 100%;
+    width: 100%;
+    max-width: 40rem;
+    padding: 2rem 1rem 0px 1.5rem;
+
+    @include mq(xs) {
+      padding: 2.5rem 2rem 0px 2.5rem;
+    }
+
+    @include mq(600px) {
+      padding: 3.5rem 2rem 0px 3.5rem;
+    }
+  }
+
+  h2 {
+    margin-bottom: 3rem;
+    letter-spacing: -0.5px;
+  }
+
+  form {
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+  }
+}
+
+fieldset {
+  border: none;
+
+  legend,
+  label {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  legend {
+    color: var(--dark-purple);
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.25px;
+  }
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  @include mq(600px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .form-control {
+    display: grid;
+  }
+
+  label {
+    color: var(--btn-text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.25px;
+    transition: color 0.3s ease 0s;
+    order: 1;
+  }
+
+  input{
+    background: var(--bg-box);
+    border: 1px solid var(--color-border-input);
+    color: var(--body-text);
+    font-family: Spartan, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.25px;
+    outline: none;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    order: 2;
+    transition: color 0.3s ease 0s, border 0.3s ease 0s, background 0.3s ease 0s;
+
+    &:focus {
+      border-color: var(--dark-purple);
+    }
+
+    &::placeholder {
+      color: var(--btn-text);
+    }
+
+    &.ng-touched.ng-invalid {
+      border-color: red;
+    }
+
+    &.ng-touched.ng-invalid ~ label {
+      color: red;
+    }
+  }
+}
+
+.bill-from .form-control:nth-child(1) {
+  grid-column: 1 / -1;
+}
+
+.bill-from .form-control:nth-child(2) {
+  grid-column: 1 / 2;
+}
+
+.bill-from .form-control:nth-child(3) {
+  grid-column: 2 / -1;
+
+  @include mq(600px) {
+    grid-column: 2 / 3;
+  }
+}
+
+.bill-from .form-control:nth-child(4) {
+  grid-column: 1 / -1;
+
+  @include mq(600px) {
+    grid-column: 3 / 4;
+  }
+}
+
+.bill-to > * {
+  grid-column: 1 / -1;
+}
+
+.bill-to .form-control:nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+.bill-to .form-control:nth-child(5) {
+  grid-column: 2 / -1;
+
+  @include mq(600px) {
+    grid-column: 2 / 3;
+  }
+}
+
+.bill-to .form-control:nth-child(6) {
+  grid-column: 1 / -1;
+
+  @include mq(600px) {
+    grid-column: 3 / 4;
+  }
+}
+
+.bill-date {
+  grid-template-columns: 1fr 1fr;
+}
+
+.bill-date .form-control:nth-child(1) {
+  grid-column: 1 / 2;
+}
+
+.bill-date .form-control:nth-child(2) {
+  grid-column: 2 / -1;
+}
+
+.bill-date .form-control:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.add-items {
+  margin-bottom: .5rem;
+
+  h3 {
+    color: hsl(225, 14%, 53%);
+    margin-bottom: 1.75rem;
+    font-size: 1.1rem;
+  }
+
+  .form-section {
+    grid-template-columns: 4rem repeat(4, 1fr) min-content;
+    gap: 1.5rem 1rem;
+    margin-bottom: 1.75rem;
+
+    @include mq(600px) {
+      grid-template-columns: 2.5fr 4.125rem 1.25fr 0.75fr min-content;
+      margin-bottom: 1rem;
+    }
+
+    &:not(.form-section:nth-of-type(1)) .form-control label {
+      @include mq(600px) {
+        display: none;
+      }
+    }
+
+    .form-control:nth-child(1) {
+      grid-column: 1 / -1;
+
+      @include mq(600px) {
+        grid-column: 1 / span 1;
+      }
+    }
+
+    .form-control:nth-child(2) {
+      @include mq(600px) {
+        grid-column: 2 / span 1;
+      }
+    }
+
+    .form-control:nth-child(3) {
+      grid-column: 2 / span 2;
+
+      @include mq(600px) {
+        grid-column: 3 / span 1;
+      }
+    }
+
+    .form-control:nth-child(4) {
+      grid-column: 4 / span 2;
+
+      @include mq(600px) {
+        grid-column: 4 / span 1;
+      }
+
+      input {
+        color: hsl(231, 20%, 61%);
+        border: none;
+        background: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .form-control:nth-child(5) {
+      grid-column: -2 / -1;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+    cursor: pointer;
+
+    svg {
+      fill: hsl(231, 20%, 61%);
+    }
+  }
+}
+
+.btn-add-items {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.user-form-actions {
+  background: none;
+  padding: 2rem 0;
+
+  button {
+    padding: 0 1rem;
+
+    @include mq(xs) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  div {
+    .btn-draft {
+      background: hsl(230, 21%, 27%);
+      color: #fff;
+    }
+
+    .btn-send {
+      background: var(--dark-purple);
+      color: #fff;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.error-message {
+  margin-top: 1em;
+
+  p {
+    color: red;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+}

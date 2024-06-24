@@ -1,0 +1,70 @@
+@import "../../../../assets/scss/mq";
+
+.user-item {
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  background: var(--bg-box);
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.5rem;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+  transition: all 0.3s ease;
+
+  @include mq(md) {
+    grid-template-columns: 5rem 9rem 1fr min-content min-content min-content;
+    grid-template-rows: min-content;
+    align-items: center;
+  }
+
+  &:hover {
+    border-color: var(--dark-purple);
+  }
+}
+
+.user-id {
+  grid-area: 1 / 1 / 2 / 2;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+
+  @include mq(md) {
+    margin-bottom: initial;
+  }
+
+  &:before {
+    content: "#";
+    color: hsl(231, 37%, 63%);
+  }
+}
+
+.user-avatar {
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.user-client {
+  color: var(--btn-text);
+  grid-area: 1 / 2 / 2 / 3;
+  text-align: end;
+
+  @include mq(md) {
+    grid-area: 1 / 3 / 2 / 4;
+    text-align: initial;
+    margin-right: 1.5rem;
+  }
+}
+
+.user-icon-arrow {
+  display: none;
+  transform: rotateZ(-90deg);
+
+  @include mq(md) {
+    display: inline-block;
+    grid-area: 1 / 6 / 2 / 7;
+  }
+}
