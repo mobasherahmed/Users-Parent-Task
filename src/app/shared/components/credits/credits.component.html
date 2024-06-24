@@ -1,0 +1,25 @@
+<div class="credits flex-center" [class.close-credits]="animateClose">
+  <div class="credits-mask" (click)="handleClose()"></div>
+  <div class="credits-container">
+    <img
+      src="./assets/img/avatar-credits.png"
+      alt="avatar-credit"
+      class="credits-logo"
+      />
+      <h2>Ahmed Mobasher</h2>
+      @for (link of links; track link) {
+        <a target="_blank" [href]="link.path">
+          <span
+            >{{ link.name }}
+            <img
+              src="./assets/img/icon-external-link.svg"
+              [alt]="link.name"
+              class="icon-link-external"
+            /></span>
+          </a>
+        }
+        @if (authService.isLoggedIn()) {
+          <button class="btn" (click)="logOut()">Logout</button>
+        }
+      </div>
+    </div>

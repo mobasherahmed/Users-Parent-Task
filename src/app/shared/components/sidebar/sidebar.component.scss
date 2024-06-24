@@ -1,0 +1,99 @@
+@import "../../../../assets/scss/mq";
+
+.sidebar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background: var(--sidebar-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  @include mq(lg) {
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0 20px 20px 0;
+    width: 103px;
+    height: 100vh;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-purple);
+    border-radius: 0 20px 20px 0;
+    margin-right: auto;
+    position: relative;
+    height: 100%;
+    width: 5rem;
+
+    @include mq(lg) {
+      width: 100%;
+      height: 6.5rem;
+    }
+
+    &:after {
+      content: "";
+      background: var(--light-purple);
+      border-radius: 20px 0 20px 0;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 50%;
+    }
+
+    img {
+      width: 31px;
+      z-index: 1;
+
+      @include mq(lg) {
+        width: 40px;
+      }
+    }
+  }
+
+  &-cta {
+    @include mq(lg) {
+      width: 100%;
+    }
+  }
+
+  &-button--theme {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include mq(lg) {
+      margin: 2rem 0;
+    }
+  }
+
+  &-button--credits {
+    padding: 0 2rem;
+    margin-left: 2rem;
+    background: none;
+    border-left: 1px solid #494e6e;
+    height: 100%;
+    cursor: pointer;
+
+    @include mq(lg) {
+      padding: 1.5rem 0;
+      margin: 0;
+      width: 100%;
+      height: auto;
+      border: none;
+      border-top: 1px solid #494e6e;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
