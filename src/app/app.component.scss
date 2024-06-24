@@ -1,0 +1,38 @@
+@import '../assets/scss/mq';
+
+.container {
+  padding-top: 80px;
+
+  @include mq(lg) {
+    padding-top: 0;
+    padding-left: 103px;
+  }
+}
+
+.user-main {
+  margin: auto;
+  padding: 2rem 1.5rem;
+
+  @include mq(md) {
+    padding: 3.5rem 3rem;
+  }
+
+  @include mq(lg) {
+    padding: 4.5rem 3rem;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(#000, 0.5);
+  z-index: 50;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.backdrop-close {
+  animation: fadeOut 0.3s ease;
+}
