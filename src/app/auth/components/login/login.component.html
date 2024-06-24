@@ -1,0 +1,56 @@
+<section
+  class="login-form theme-animation"
+  [class.close-form]="animateFormClose"
+  >
+  <div class="form-wrap">
+    <!-- <h2>{{ title }}</h2> -->
+    <form [formGroup]="form" novalidate autocomplete="off">
+      <fieldset>
+        <legend>Users App</legend>
+        <div class="form-section">
+          <div class="form-control">
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              autocomplete="off"
+              />
+              <label for="name">Username</label>
+            </div>
+            <div class="form-control icon">
+              <input
+                [type]="showPassword? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                autocomplete="off"
+                />
+                @if (!showPassword) {
+                  <img src="../../../../assets/img/eye.svg" alt="eye" (click)="showPassword = !showPassword"  />
+                }
+                @if (showPassword) {
+                  <img
+                    src="../../../../assets/img/eye-password-hide.svg"
+                    alt="eye-password-hide"  (click)="showPassword = !showPassword"
+                    />
+                }
+                <label for="email">Password</label>
+              </div>
+            </div>
+          </fieldset>
+
+          @if (showErrorMessage) {
+            <div class="error-message">
+              <p>- All fields must be filled.</p>
+            </div>
+          }
+
+          <div class="login-form-actions flex-between">
+            <button class="btn btn-login" type="submit" (click)="handleFormSubmit()">
+              Login
+            </button>
+          </div>
+        </form>
+
+
+      </div>
+    </section>
