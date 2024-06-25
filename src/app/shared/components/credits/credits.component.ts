@@ -2,6 +2,7 @@
 import { Component, EventEmitter, Inject, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
+import { User } from '../../../users/interfaces/user.interface';
 
 @Component({
   selector: 'app-credits',
@@ -15,7 +16,7 @@ export class CreditsComponent {
   closeCreditsScreen: EventEmitter<boolean> = new EventEmitter<boolean>();
   private router = inject(Router);
   public authService = inject(AuthService);
-
+  LoggedUser!: User;
   animateClose: boolean = false;
 
   links = [
@@ -30,6 +31,11 @@ export class CreditsComponent {
     this.router.navigate(['']);
     this.handleClose();
   }
+
+    ngOnInit(){
+        // @ts-ignore
+        this.LoggedUser = JSON.parse(localStorage.getItem('LoggedUser'));
+    }
 
   handleClose(): void {
 

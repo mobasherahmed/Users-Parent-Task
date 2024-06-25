@@ -58,7 +58,7 @@ export class UserComponent implements OnInit, OnDestroy {
     this.user.status = 'Active'
     const {id, ...rest} = this.user
     this.updateUsers$ = this.userService.updateUser(this.user.id, rest)
-      .subscribe(() => this.toastrService.success('Invoice updated successfully'))
+      .subscribe(() => this.toastrService.success('User updated successfully'))
   }
 
 

@@ -48,6 +48,7 @@ export class UserFormComponent implements OnInit {
       this.title = 'Edit #' + this.userService.userToEdit.id;
       this.form.patchValue(this.userService.userToEdit);
       this.form.get('confirmPassword')?.setValue(this.userService.userToEdit.password);
+      this.userStatus = this.userService.userToEdit.status;
     }
   }
 
@@ -72,7 +73,9 @@ export class UserFormComponent implements OnInit {
     if (!this.userService.userToEdit) {
       
       newUser.createdAt = new Date();
+      newUser.role = 'user';
       newUser.avatar = 'https://reqres.in/img/faces/5-image.jpg';
+      newUser.status = this.userStatus;
       
       this.userService.createUser(newUser).subscribe({
         next: () => {
@@ -85,6 +88,7 @@ export class UserFormComponent implements OnInit {
       });
     } else {
       newUser.updatedAt = new Date();
+      newUser.role = this.userService.userToEdit.role;
       newUser.avatar = this.userService.userToEdit.avatar;
       this.userService
         .updateUser(this.userService.userToEdit.id, newUser)

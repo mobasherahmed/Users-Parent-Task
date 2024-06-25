@@ -2,11 +2,11 @@
   <div class="credits-mask" (click)="handleClose()"></div>
   <div class="credits-container">
     <img
-      src="./assets/img/avatar-credits.png"
+      [src]="LoggedUser ? LoggedUser.avatar : './assets/img/avatar-credits.png'"
       alt="avatar-credit"
       class="credits-logo"
       />
-      <h2>Ahmed Mobasher</h2>
+      <h2>{{LoggedUser ? LoggedUser.name : 'Ahmed Mobasher' }}</h2>
       @for (link of links; track link) {
         <a target="_blank" [href]="link.path">
           <span

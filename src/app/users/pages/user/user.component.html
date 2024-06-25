@@ -19,10 +19,9 @@
       <div class="user-actions top">
         @if (isAdmin) {
           <button class="btn" (click)="handleEdit()">Edit</button>
-        }
-        @if (isAdmin) {
           <button class="btn btn-delete" (click)="openModal()">Delete</button>
         }
+
         @if (user.status.toLowerCase() !== 'active' && isAdmin) {
           <button
             class="btn btn-active"
@@ -52,8 +51,6 @@
     <div class="user-actions bottom">
       @if (isAdmin) {
         <button class="btn" (click)="handleEdit()">Edit</button>
-      }
-      @if (isAdmin) {
         <button class="btn btn-delete" (click)="openModal()">Delete</button>
       }
       @if (user.status.toLowerCase() !== 'active' && isAdmin) {
