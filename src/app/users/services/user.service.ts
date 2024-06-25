@@ -25,25 +25,24 @@ export class UserService {
    let params = new HttpParams();
    if (status) {
      params = params.append('status', status);
-     params = params.append('per_page', 10);
    }
    return this.http.get<User[]>(
       `${environment.base_url}${environment.user_endpoint}`,
-      { params }
+      { params}
     );    
   }
  
-  getUser(id: string  | any): Observable<any> {
+  getUser(id: string): Observable<any> {
       return this.http.get<User>(
          `${environment.base_url}${environment.user_endpoint}/${id}`
-       ).pipe(map((res : any)=>res.data));
+       );
    }
 
-  updateUser(id: number | any, item: any): Observable<any> {
+  updateUser(id: string, item: any): Observable<any> {
      return this.http.put<any>(`${environment.base_url}${environment.user_endpoint}/${id}`, item);
   }
  
-  deleteUser(id: number | any): Observable<any> {
+  deleteUser(id: string): Observable<any> {
      return this.http.delete<any>(`${environment.base_url}${environment.user_endpoint}/${id}`);
   }
 }

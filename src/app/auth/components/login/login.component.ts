@@ -46,10 +46,9 @@ export class LoginComponent {
 
     this.authService.login(this.form.value).subscribe(
       (res) => {
-        console.log("uses>>>",res)
         this.uiService.closeForm();
         this.toastrService.success('Login successfully');
-        localStorage.setItem('LoggedUser', JSON.stringify(res));
+        localStorage.setItem('LoggedUser', JSON.stringify(res.user));
         this.router.navigate(['/users']);
       },
       (error) =>  this.toastrService.error(error.error.message)
