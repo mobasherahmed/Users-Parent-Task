@@ -7,7 +7,7 @@
     <form [formGroup]="form" novalidate autocomplete="off">
       <fieldset>
         <legend>User From</legend>
-        <div class="form-section bill-form">
+        <div class="form-section personal-details">
           <div class="form-control">
             <input
               type="text"
@@ -15,21 +15,55 @@
               formControlName="name"
               autocomplete="off"
             />
-            <label for="name" data-test="prueba"> Name </label>
+            <label for="name" data-test="mobasher"> Name </label>
           </div>
           <div class="form-control">
             <input
               type="text"
-              id="job"
-              formControlName="job"
+              id="username"
+              formControlName="username"
               autocomplete="off"
             />
-            <label for="job">job</label>
+            <label for="username">Username</label>
           </div>
           <div class="form-control">
             <input
-              type="email"
+              type="text"
+              id="first_name"
+              formControlName="first_name"
+              autocomplete="off"
+            />
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="last_name"
+              formControlName="last_name"
+              autocomplete="off"
+            />
+            <label for="country">Last Name</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="form-section job-details">
+          <div class="form-control">
+            <input
+              type="text"
+              id="job"
+              placeholder="e.g. Graphic Designer"
+              formControlName="job"
+              autocomplete="off"
+            />
+            <label for="job">Job</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
               id="email"
+              placeholder="e.g. email@example.com"
               formControlName="email"
               autocomplete="off"
             />
@@ -38,9 +72,54 @@
         </div>
       </fieldset>
 
+      <fieldset>
+        <div class="form-section secert-details">
+          <div class="form-control icon">
+            <input
+            [type]="showPassword? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              autocomplete="off"
+            />
+            @if (!showPassword) {
+              <img src="../../../../assets/img/eye.svg" alt="eye" (click)="showPassword = !showPassword"  />
+            }
+            @if (showPassword) {
+              <img
+                src="../../../../assets/img/eye-password-hide.svg"
+                alt="eye-password-hide"  (click)="showPassword = !showPassword"
+                />
+            }
+            <label for="password">Password</label>
+          </div>
+          <div class="form-control icon">
+            <input
+            [type]="showPassword? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              autocomplete="off"
+            />
+            @if (!showPassword) {
+              <img src="../../../../assets/img/eye.svg" alt="eye" (click)="showPassword = !showPassword"  />
+            }
+            @if (showPassword) {
+              <img
+                src="../../../../assets/img/eye-password-hide.svg"
+                alt="eye-password-hide"  (click)="showPassword = !showPassword"
+                />
+            }
+            <label for="description">Confirm Password</label>
+          </div>
+        </div>
+      </fieldset>
       @if (showErrorMessage) {
       <div class="error-message">
         <p>- All fields must be filled.</p>
+      </div>
+      }
+      @if (passwordError) {
+      <div class="error-message">
+        <p>- Passwords do not match.</p>
       </div>
       }
     </form>

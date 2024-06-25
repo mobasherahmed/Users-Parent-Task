@@ -23,6 +23,8 @@ export class UserFormComponent implements OnInit {
   showErrorMessage = false;
   userStatus = 'Pending';
   title = 'Create User';
+  showPassword : boolean = false;
+  passwordError: boolean = false;
   constructor(
     private fb: FormBuilder,
     private uiService: UIService,
@@ -32,30 +34,46 @@ export class UserFormComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       job: ['', Validators.required],
-      email: ['', Validators.required],
-    });
+      email: ['',[ Validators.required,Validators.email]],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },{ validator: this.passwordMatchValidator });
   }
 
   ngOnInit() {
     if (this.userService.userToEdit) {
       this.title = 'Edit #' + this.userService.userToEdit.id;
-      console.log("this.userService.userToEdit",this.userService.userToEdit)
       this.form.patchValue(this.userService.userToEdit);
+      this.form.get('confirmPassword')?.setValue(this.userService.userToEdit.password);
     }
   }
 
+  passwordMatchValidator(formGroup: FormGroup): null | object {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
   handleFormSubmit(): void {
-    this.showErrorMessage = this.form.invalid;
+    this.showErrorMessage = this.form.invalid && !this.form.hasError('mismatch');
+    this.passwordError = this.form.hasError('mismatch');
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
     const newUser = this.form.value;
-    newUser.createdAt = new Date();
     newUser.status = this.userStatus;
-
+    
     if (!this.userService.userToEdit) {
+      
+      newUser.createdAt = new Date();
+      newUser.avatar = 'https://reqres.in/img/faces/5-image.jpg';
+      
       this.userService.createUser(newUser).subscribe({
         next: () => {
           this.userService.activeFilter = null;
@@ -66,6 +84,8 @@ export class UserFormComponent implements OnInit {
         error: (error) => this.toastrService.error(error.message),
       });
     } else {
+      newUser.updatedAt = new Date();
+      newUser.avatar = this.userService.userToEdit.avatar;
       this.userService
         .updateUser(this.userService.userToEdit.id, newUser)
         .subscribe({

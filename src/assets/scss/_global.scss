@@ -38,7 +38,7 @@
   justify-content: space-between;
 }
 
-.status-paid,
+.status-active,
 .status-pending,
 .status-draft {
   display: flex;
@@ -61,12 +61,12 @@
   }
 }
 
-.status-paid {
-  color: $status-paid;
-  background: rgba($status-paid, 0.05);
+.status-active {
+  color: $status-active;
+  background: rgba($status-active, 0.05);
 
   &:before {
-    background: $status-paid;
+    background: $status-active;
   }
 }
 

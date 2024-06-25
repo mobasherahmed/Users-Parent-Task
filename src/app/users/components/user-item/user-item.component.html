@@ -3,7 +3,7 @@
   class="user-item theme-animation"
   [ngStyle]="{ 'animation-delay': idx * 0.2 + 's' }"
 >
-  <span class="user-id">{{ user.id }}</span>
+  <span class="user-id">{{ user.id | slice: 0:6 }}</span>
   <p class="user-client">{{ user.first_name + ' ' + user.last_name }}</p>
   <img
     [src]="user.avatar"
