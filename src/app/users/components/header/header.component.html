@@ -4,6 +4,29 @@
     <span>There are {{ counter }} total users.</span>
   </div>
   <div>
+    <div class="header-filter--dropdown">
+      <button class="header-btn--filter" (click)="showFilter()">
+        <span class="header-btn-text">
+          Filter <span class="header-text-hide">by status</span>
+        </span>
+        <img
+          src="./assets/img/icon-arrow-down.svg"
+          alt="Icon Arrow"
+          class="filter-icon-arrow"
+          [class.activeFilter]="openFilter"
+          />
+        </button>
+        @if (openFilter) {
+          <ul (mouseleave)="closeFilter($event)" class="dropdown" >
+            @for (filter of filters; track filter; let i = $index) {
+              <li (click)="toggleFilter(filter.name, i)" >
+                <span class="filter-checkbox" [class.active-filter]="filter.checked" ></span>
+                <span class="filter-text">{{ filter.name }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
       <button class="header-btn--new" (click)="toggleForm()">
         <div class="wrap-icon-plus">
           <img src="./assets/img/icon-plus.svg" alt="Icon Plus" />

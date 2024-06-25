@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.statusCatalog.subscribe(data => {
-      this.filters = ['Paid', 'Draft', 'Pending'].map((item: string) => ({
+      this.filters = ['Active', 'Draft', 'Pending'].map((item: string) => ({
         name: item,
         checked: this.activeFilter === item
       }));

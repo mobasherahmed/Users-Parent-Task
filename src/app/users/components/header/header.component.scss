@@ -30,7 +30,31 @@
   }
 }
 
+.header-filter--dropdown {
+  display: inline-block;
+  position: relative;
+}
 
+.header-btn--filter {
+  margin-right: 1rem;
+  cursor: pointer;
+
+  .header-btn-text {
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-right: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .filter-icon-arrow {
+    transform: rotateZ(0);
+    transition: transform 0.25s ease-in-out;
+
+    &.activeFilter {
+      transform: rotateZ(-180deg);
+    }
+  }
+}
 
 .header-btn--new {
   background: var(--dark-purple);
@@ -78,5 +102,71 @@
     display: inline-block;
   }
 }
+
+
+.dropdown {
+  background: var(--dropdown-bg);
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  box-shadow: 0px 10px 20px var(--dropdown-shadow);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  min-width: 12rem;
+  transform: translateX(-50%);
+  z-index: 20;
+
+  li {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .filter-checkbox,
+  .filter-text {
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+
+  .filter-checkbox {
+    background: var(--dropdown-checkbox);
+    width: 15px;
+    height: 15px;
+    margin-right: 1rem;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      background: url(../../../../assets/img/icon-check.svg) no-repeat center;
+      background-size: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+    }
+
+    &.active-filter {
+      background: var(--dark-purple);
+
+      &.filter-checkbox:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .label-text {
+    line-height: 1;
+  }
+}
+
 
 

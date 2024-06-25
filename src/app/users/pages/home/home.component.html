@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (filter)="filterByStatus($event)"></app-header>
 <section class="home">
   <app-user-list [users]="users"></app-user-list>
 </section>

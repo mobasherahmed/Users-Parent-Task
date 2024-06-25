@@ -6,12 +6,41 @@
         <span>Go back</span>
       </button>
     </div>
+    <div class="user-status-card flex-between theme-animation">
+      <div class="flex-between">
+        <p>Status</p>
+        <span
+          class="user-status"
+          [ngClass]="'status-' + user.status.toLowerCase()"
+          >
+          {{ user.status }}
+        </span>
+      </div>
+      <div class="user-actions top">
+        @if (isAdmin) {
+          <button class="btn" (click)="handleEdit()">Edit</button>
+        }
+        @if (isAdmin) {
+          <button class="btn btn-delete" (click)="openModal()">Delete</button>
+        }
+        @if (user.status.toLowerCase() !== 'active' && isAdmin) {
+          <button
+            class="btn btn-active"
+            (click)="markAsActive()"
+            >
+            Mark As Active
+          </button>
+        }
+      </div>
+    </div>
     <div class="user-wrap theme-animation">
       <div class="user-header flex-between">
         <div class="user-header--left">
-          <span>{{ user.id }}</span>
-          <p>{{ user.first_name }} {{ user.last_name }}</p>
-          <p>{{ user.email }}</p>
+          <span>{{ user.id | slice: 0:6 }}</span>
+          <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+          <h4>{{ user.email }}</h4>
+          <h4>{{ user.username }}</h4>
+          <h4>{{ user.job }}</h4>
         </div>
       </div>
       <div class="user-body flex-between">
@@ -19,10 +48,22 @@
           <img [src]="user.avatar" alt="userAvatar">
         </div>
       </div>
-        <div class="user-actions">
-          <button class="btn" (click)="handleEdit()">Edit</button>
-          <button class="btn btn-delete" (click)="openModal()">Delete</button>
-      </div>
+    </div>
+    <div class="user-actions bottom">
+      @if (isAdmin) {
+        <button class="btn" (click)="handleEdit()">Edit</button>
+      }
+      @if (isAdmin) {
+        <button class="btn btn-delete" (click)="openModal()">Delete</button>
+      }
+      @if (user.status.toLowerCase() !== 'active' && isAdmin) {
+        <button
+          class="btn btn-active"
+          (click)="markAsActive()"
+          >
+          Mark As Active
+        </button>
+      }
     </div>
   </section>
 }
@@ -33,7 +74,7 @@
     <div class="modal-user-delete">
       <h2>Confirm Deletion</h2>
       <p>
-        Are you sure you want to delete user {{ user.id }}? This action
+        Are you sure you want to delete user {{ user.id | slice: 0:6 }}? This action
         cannot be undone.
       </p>
       <div class="user-actions">

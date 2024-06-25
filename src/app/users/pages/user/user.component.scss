@@ -24,6 +24,7 @@
   }
 }
 
+.user-status-card,
 .user-wrap {
   background: var(--user-bg);
   box-shadow: rgb(72 84 159 / 10%) 0px 10px 10px -10px;
@@ -32,8 +33,27 @@
   padding: 1.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+}
+
+.user-status-card {
+  margin-bottom: 1rem;
+
+  @include mq(md) {
+    margin-bottom: 1.75rem;
+  }
+
+  .flex-between {
+    width: 100%;
+
+    @include mq(sm) {
+      width: auto;
+    }
+  }
+
+  p {
+    color: var(--btn-text);
+    margin-right: 1rem;
+  }
 }
 
 .user-wrap {
@@ -106,30 +126,57 @@
   @include mq(md) {
     margin-bottom: 1.5rem;
   }
+}
 
-  .image-wrap{
-    img {
-      border-radius: 50%;
-    }
-  }
 
-  }
 
 .user-actions {
+  background: var(--actions-bg);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding: 1.5rem .75em;
   text-align: right;
-  width: 100%;
+  width: calc(100% + 3rem);
   position: relative;
   bottom: -2rem;
+  left: -1.5rem;
+
+  @include mq(xs) {
+    padding: 1.5rem;
+  }
 
   .btn {
     margin-left: 0.5rem;
   }
+
+  &.top {
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    bottom: 0;
+    left: auto;
+
+    @include mq(sm) {
+      display: inline-flex;
+    }
+  }
+
+  &.bottom {
+    @include mq(sm) {
+      display: none;
+    }
+  }
 }
 
+.btn-active {
+  background: var(--dark-purple);
+  color: #fff;
+  margin-left: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
 
 .modal-user-delete {
   h2 {

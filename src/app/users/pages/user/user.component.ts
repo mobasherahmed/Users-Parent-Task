@@ -54,6 +54,13 @@ export class UserComponent implements OnInit, OnDestroy {
     this.isAdmin = this.authService.isAdmin();
   }
 
+  markAsActive(): void {
+    this.user.status = 'Active'
+    const {id, ...rest} = this.user
+    this.updateUsers$ = this.userService.updateUser(this.user.id, rest)
+      .subscribe(() => this.toastrService.success('Invoice updated successfully'))
+  }
+
 
   openModal(): void {
     this.modalService.open();
@@ -78,7 +85,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   setTitle(): void {
-    this.titleService.setTitle(`Users | #${this.user.id}`)
+    this.titleService.setTitle(`Users | #${this.user?.id}`)
   }
 
   ngOnDestroy(): void {
