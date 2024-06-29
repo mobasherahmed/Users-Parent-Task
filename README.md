@@ -20,6 +20,7 @@ Check static array of users exsited on assets [You have to use one of them to lo
 ✅ Mutliple users.
 ✅ Authentication & Authorization.
 ✅ Using Signals.
+✅ Using Unit Testing using Jasmine & Karma [Login Component].
 
 ## Running the app
 

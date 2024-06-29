@@ -21,15 +21,16 @@
               <input
                 [type]="showPassword? 'text' : 'password'"
                 id="password"
+                data-testid="password"
                 formControlName="password"
                 autocomplete="off"
                 />
                 @if (!showPassword) {
-                  <img src="../../../../assets/img/eye.svg" alt="eye" (click)="showPassword = !showPassword"  />
+                  <img src="../../../../assets/img/eye.svg" data-testid="toggle-password" alt="eye" (click)="showPassword = !showPassword"  />
                 }
                 @if (showPassword) {
                   <img
-                    src="../../../../assets/img/eye-password-hide.svg"
+                    src="../../../../assets/img/eye-password-hide.svg" data-testid="toggle-password"
                     alt="eye-password-hide"  (click)="showPassword = !showPassword"
                     />
                 }
@@ -45,7 +46,7 @@
           }
 
           <div class="login-form-actions flex-between">
-            <button class="btn btn-login" type="submit" (click)="handleFormSubmit()">
+            <button class="btn btn-login" data-test-id="loginBtn" type="submit" [disabled]="form.invalid" (click)="handleFormSubmit()">
               Login
             </button>
           </div>
